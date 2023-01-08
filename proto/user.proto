@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+message User {
+    string id = 1;
+    string name = 2;
+    string email = 3;
+    string phone = 4;
+    string region = 5;
+}
+
+message UserList {
+    repeated User users = 1;
+}
+
+message Empty {}
+
+message UserInput {
+    string id = 1;
+}
+
+service UserService {
+    rpc create(User) returns (User) {}
+    rpc read(UserInput) returns (User) {}
+    rpc readAll(Empty) returns (UserList) {}
+}
